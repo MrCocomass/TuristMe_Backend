@@ -31,4 +31,28 @@
   </footer>
 
   </body>  
+
+<script type="text/javascript">
+  function log(){
+    $.ajax({
+      method: "POST",
+      url:"https://localhost:8888/TuristMe/cliente", data:
+      email:document.getElementById("emails").value,
+      password: document.getElementById("passwords").value
+      }
+    )}
+
+    .done(function(data, text, done)
+    {
+      var Authorization = localStorage.setItem('Authorization',data);
+      console.log(data);
+      console.log("llegando aqui");
+      window.open("")
+    })
+
+    .fail(function(msg){
+      alert("no existe este usuario");
+    })
+</script>
+
 </html>
