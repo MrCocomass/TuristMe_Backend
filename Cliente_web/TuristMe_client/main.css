@@ -1,0 +1,74 @@
+
+font-variant-numeric: background-color: #A5A186}
+
+form
+{
+   float:left;
+   padding:2px;
+   cursor:pointer;
+   display:block;
+   width:290px;
+   margin:auto;
+   text-align:left;
+}
+
+div
+{
+ margin-left:300px;
+ margin-top: 100px;
+}
+
+legend
+{
+   background-color: white;
+   font-family: "Trebuchet MS", Geneva, Arial, Helvetica, sans-serif;
+   font-weight: bold;
+}
+
+label
+{
+   display: block;
+   padding:2px;
+   margin:2px;
+   cursor:pointer;
+}
+
+input,select{
+   margin:10px; 
+   font-family: "Trebuchet MS", Geneva, Arial, Helvetica, sans-serif;
+   font-size: 12px;
+   display: block;
+}
+
+fieldset
+{
+   color:#0A8E77;
+   float: left;
+   width: 10%;
+   display: block;
+}
+
+.button {
+  background-color: #0A8E77; /* Green */
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-left: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  }
+.button:hover{
+	background-color: white;
+	color: #0A8E77;
+}
+
+footer
+{
+  background-color:#0A8E77;
+  padding: auto;
+  margin-top: 75%;
+  height: 100px;
+}
+
