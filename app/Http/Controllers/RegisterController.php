@@ -9,7 +9,7 @@ use\Firebase\JWT\JWT;
 use App\User;
 
 
-class PlacesController extends Controller
+class RegisterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class PlacesController extends Controller
      */
     public function create()
     {
-        //
+     //
     }
 
     /**

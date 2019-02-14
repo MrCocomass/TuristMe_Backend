@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
-<html lang="es">  
-  <head>
+  <html lang="es">
+
+<head>
     <title>CLIENTE TURISTME</title> 
 
     <meta charset="UTF-8">
@@ -9,22 +9,24 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="Main.css" rel="stylesheet"/>
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico" />   
-  </head>  
+</head>  
 
-  <body>    
-      <header>
-      </header> 
-   <div>
-    
-        <fieldset>
-          <legend>Login Client</legend>
-          <label>Email</label><input id="email" type="text" name="email" size="30" maxlength="100" />
-          <label>Password</label><input id="password" type="password" name="password" size="30" maxlength="100"/>
-        <br>
-          <input class ="button" onclick="log()" type="submit" value="Login">
-        </fieldset>
-   </div>
-   <br>
+<body>    
+  <header>
+  </header> 
+    <div>
+      <fieldset>
+        <legend>Login Client</legend>
+          <label>Email</label><input id="emails" type="text" name="email" size="30" maxlength="100" />
+
+          <label>Name</label><input id="names" type="text" name="name" size="30" maxlength="100" />
+
+          <label>Password</label><input id="passwords" type="password" name="password" size="30" maxlength="100"/>
+              <br>
+          <button class ="button" onclick="log()" type="submit" value="Register">
+      </fieldset>
+  </div>
+      <br>
   <footer>
     <br>
     <br>
@@ -36,12 +38,13 @@
 
   function log(){
 
-    $.ajax({
+      $.ajax({
       method: "POST",
-      url: "http://localhost:8888/TuristMe/public/index.php/api/login",
+      url: "http://localhost:8888/TuristMe/public/index.php/api/users",
       data: {
-        email: document.getElementById("email").value, 
-        contrasena: document.getElementById("password").value
+        email: document.getElementById("emails").value,
+        name: document.getElementById("names").value,
+        contrasena: document.getElementById("passwords").value,
       },
 
       success:function(data)
