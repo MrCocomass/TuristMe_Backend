@@ -3,7 +3,6 @@
 <html lang="es">  
   <head>
     <title>CLIENTE TURISTME</title> 
-
     <meta charset="UTF-8">
     <meta name="title" content="TuristMe Client">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -15,7 +14,6 @@
       <header>
       </header> 
    <div>
-    
         <fieldset>
           <legend>Login Client</legend>
           <label>Email</label><input id="email" type="text" name="email" size="30" maxlength="100" />
@@ -29,10 +27,10 @@
     <br>
     <br>
   </footer>
-
-  </body>  
+</body>  
 
 <script type="text/javascript">
+
 
   function log(){
 
@@ -40,8 +38,8 @@
       method: "POST",
       url: "http://localhost:8888/TuristMe/public/index.php/api/login",
       data: {
-        email: document.getElementById("email").value, 
-        contrasena: document.getElementById("password").value
+       email: document.getElementById("email").value, 
+      password: document.getElementById("password").value
       },
 
       success:function(data)
@@ -52,13 +50,38 @@
         window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
       },
       error:function(msg){
-        console.log(msg.responseText);
-        var response = jQuery.parseJSON(msg.responseText);
-        $('<div/>').html(response.message).appendTo('#caja');
+        console.log("llegando aqui");
+        
       }
     })
     
   }
+
+  // function log(){
+
+  //   $.ajax({
+  //     method: "POST",
+  //     url: "http://localhost:8888/TuristMe/public/index.php/api/login",
+  //     data: {
+  //       email: document.getElementById("email").value, 
+  //       contrasena: document.getElementById("password").value
+  //     },
+
+  //     success:function(data)
+  //     {
+  //       var Authorization = localStorage.setItem('Authorization',data);
+  //       console.log(data);
+  //       console.log("llegando aqui");
+  //       window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
+  //     },
+  //     error:function(msg){
+  //       console.log(msg.responseText);
+  //       var response = jQuery.parseJSON(msg.responseText);
+  //       $('<div/>').html(response.message).appendTo('#caja');
+  //     }
+  //   })
+    
+  // }
 </script>
 
 
