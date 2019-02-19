@@ -11,8 +11,19 @@ class UsersController extends Controller
 
 	public function index()
     {
-        $users = App\User::all();
+        $user = User::all();
 
+        if(count($user) <1)
+        {
+        return $this->success("no hay usuarios");
+        }
+        else
+        {
+            return $this->success("lista usuarios", $user);
+        }
+        //var_dump($user);
+        //exit();
+        
     }
 
     public function store(Request $request)

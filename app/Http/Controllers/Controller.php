@@ -10,4 +10,11 @@ use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
+
+    protected function success($message, $data = [])
+    {
+    	$json = ['message' => $message, 'data' => $data];
+    	$json = json_encode($json);
+    	return response($json, 200)->header('Access-Control-Allow-Origin', '*');
+    }
 }
