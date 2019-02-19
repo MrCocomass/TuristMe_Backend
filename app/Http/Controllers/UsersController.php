@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \Firebase\JWT\JWT;
 use App\User;
 
 class UsersController extends Controller
@@ -10,7 +11,7 @@ class UsersController extends Controller
 
 	public function index()
     {
-        $users = App\Users::all();
+        $users = App\User::all();
 
     }
 
