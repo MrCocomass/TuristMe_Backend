@@ -12,6 +12,8 @@
 
   <body>    
       <header>
+        <h1 id="error"></h1>
+        <h1 id="succes"></h1>
       </header> 
    <div>
         <fieldset>
@@ -22,13 +24,13 @@
           <input class ="button" onclick="log()" type="submit" value="Login">
         </fieldset>
           <br>
-          <div>
+        <!--   <div>
             <label>Email</label><input id="email_reg" type="text" name="email" size="30" maxlength="100" />
           <label>Name</label><input id="name" type="text" name="name" size="30" maxlength="100"/>
           <label>Password</label><input id="password_reg" type="password" name="password" size="30" maxlength="100"/>
 
           <input class ="button" onclick="regis()" type="submit" value="register"></div>
-   </div>
+   </div> -->
    <br>
   <footer>
     <br>
@@ -53,43 +55,44 @@
       {
         var Authorization = localStorage.setItem('Authorization',data);
         console.log(data);
-        console.log("todo correcto");
-        window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
+        console.log("Login success");
+        window.location= "http://localhost:8888//TuristMe/Cliente_web/TuristMe_client/register.html";
       },
-      error:function(msg){
-        console.log("algo ha salido mal");
+      error:function(response){
+        console.log(response.responseJSON.message);
+        $('#error').text(response.responseJSON.message);
         
       }
     })
     
   }
 
-   function regis(){
+   // function regis(){
 
-     $.ajax({
-       method: "POST",
-       url: "http://localhost:8888/TuristMe/public/index.php/api/users",
-       data: {
-       email: document.getElementById("email_reg").value, 
-       password: document.getElementById("password_reg").value,
-       name: document.getElementById("name").value,
-      },
+   //   $.ajax({
+   //     method: "POST",
+   //     url: "http://localhost:8888/TuristMe/public/index.php/api/users",
+   //     data: {
+   //     email: document.getElementById("email_reg").value, 
+   //     password: document.getElementById("password_reg").value,
+   //     name: document.getElementById("name").value,
+   //    },
 
-      success:function(data)
-       {
-         var Authorization = localStorage.setItem('Authorization',data);
-         console.log(data);
-         console.log("llegando aqui");
-         window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
-       },
-       error:function(msg){
-         console.log(msg.responseText);
-         var response = jQuery.parseJSON(msg.responseText);
-         $('<div/>').html(response.message).appendTo('#caja');
-       }
-     })
+   //    success:function(data)
+   //     {
+   //       var Authorization = localStorage.setItem('Authorization',data);
+   //       console.log(data);
+   //       console.log("llegando aqui");
+   //       window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
+   //     },
+   //     error:function(msg){
+   //       console.log(msg.responseText);
+   //       var response = jQuery.parseJSON(msg.responseText);
+   //       $('<div/>').html(response.message).appendTo('#caja');
+   //     }
+   //   })
     
-   }
+   // }
 </script>
 
 

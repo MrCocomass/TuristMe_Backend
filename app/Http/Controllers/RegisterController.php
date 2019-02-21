@@ -11,6 +11,49 @@ use App\User;
 
 class RegisterController extends Controller
 {
+    public function Register()
+    {
+        
+        $inputs = $_POST;
+
+        $userDB = User::where('email', $inputs['email'])->first();
+
+        if (empty($userDB)) 
+        {
+            return $this->error(401, 'campos vacios');
+        }
+
+        if ($userDB->password == $inputs['password'] && $userDB->id_Roles == 1) 
+        {
+            $key = "ñasjdlfjuf982378765dslkñfj7asdnk_;sdf";
+            $dataTokenUser = array(
+                "email" => $userDB->email,
+                "password" => $userDB->password,
+                "name"=>$userDB->name
+
+            );
+
+            // if (strlen($inputs['password']) <8)
+            // {
+            // return $this->error(400, 'contraseña debe tener al menos 8 caracteres');
+            // }
+
+            $token = JWT::encode($dataTokenUser, $key);
+
+            return response()->json([
+                'token' => $token,
+            ]);
+        }
+        else
+        {
+            return response()->json([
+                'message' => 'no puedes aceeeeeedr',
+            ], 400);
+        }
+
+
+
+    }
     /**
      * Display a listing of the resource.
      *

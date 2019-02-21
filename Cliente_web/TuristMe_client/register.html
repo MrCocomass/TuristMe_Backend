@@ -14,18 +14,15 @@
 <body>    
   <header>
   </header> 
-    <div>
-      <fieldset>
-        <legend>Login Client</legend>
-          <label>Email</label><input id="emails" type="text" name="email" size="30" maxlength="100" />
+       <div>
+            <label>Email</label><input id="email_reg" type="text" name="email" size="30" maxlength="100" />
 
-          <label>Name</label><input id="names" type="text" name="name" size="30" maxlength="100" />
+          <label>Name</label><input id="name" type="text" name="name" size="30" maxlength="100"/>
 
-          <label>Password</label><input id="passwords" type="password" name="password" size="30" maxlength="100"/>
-              <br>
-          <button class ="button" onclick="log()" type="submit" value="Register">
-      </fieldset>
-  </div>
+          <label>Password</label><input id="password_reg" type="password" name="password" size="30" maxlength="100"/>
+
+          <input class ="button" onclick="regis()" type="submit" value="register"></div>
+   </div>
       <br>
   <footer>
     <br>
@@ -36,32 +33,32 @@
 
 <script type="text/javascript">
 
-  function log(){
+  function regis(){
 
-      $.ajax({
-      method: "POST",
-      url: "http://localhost:8888/TuristMe/public/index.php/api/users",
-      data: {
-        email: document.getElementById("emails").value,
-        name: document.getElementById("names").value,
-        contrasena: document.getElementById("passwords").value,
+     $.ajax({
+       method: "POST",
+       url: "http://localhost:8888/TuristMe/public/index.php/api/users",
+       data: {
+       email: document.getElementById("email_reg").value, 
+       password: document.getElementById("password_reg").value,
+       name: document.getElementById("name").value,
       },
 
       success:function(data)
-      {
-        var Authorization = localStorage.setItem('Authorization',data);
-        console.log(data);
-        console.log("llegando aqui");
-        window.location= "http://localhost:8888/TuristMe/public/index.php/api/users";
-      },
-      error:function(msg){
-        console.log(msg.responseText);
-        var response = jQuery.parseJSON(msg.responseText);
-        $('<div/>').html(response.message).appendTo('#caja');
-      }
-    })
+       {
+         var Authorization = localStorage.setItem('Authorization',data);
+         console.log(data);
+         console.log("llegando aqui");
+         window.location= "http://localhost:8888/TuristMe/Cliente_web/TuristMe_client/Correcto.html";
+       },
+       error:function(msg){
+         console.log(msg.responseText);
+         var response = jQuery.parseJSON(msg.responseText);
+         $('<div/>').html(response.message).appendTo('#caja');
+       }
+     })
     
-  }
+   }
 </script>
 
 

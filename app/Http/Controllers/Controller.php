@@ -17,4 +17,12 @@ class Controller extends BaseController
     	$json = json_encode($json);
     	return response($json, 200)->header('Access-Control-Allow-Origin', '*');
     }
+
+   protected function error($code, $message)
+   {
+   	return response()->json([
+   		'code' => $code,
+   	     'message' => $message]
+   	     , $code);
+   }
 }

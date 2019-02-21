@@ -17,12 +17,31 @@ class LoginController extends Controller
 
         $userDB = User::where('email', $inputs['email'])->first();
 
+
         if (empty($userDB)) 
         {
-            return response()->json([
-                'message' => 'no tienes permisos',
-            ], 400);
+            return $this->error(401, 'campos vacios');
         }
+
+        // if (empty($userDB)) 
+        // {
+        //     return response()->json([
+        //         'message' => 'no tienes permisos',
+        //     ], 401);
+        // }
+
+
+        if($inputs['password'] ==null)
+        {
+            return $this->error(401, 'introdue contraseña');
+                
+        }
+        // if($inputs['password'] ==null)
+        // {
+        //     return response()->json([
+        //         'message' => 'no tienes huevos',
+        //     ], 401);
+        // }
 
         if ($userDB->password == $inputs['password'] && $userDB->id_Roles == 1) 
         {
@@ -42,7 +61,7 @@ class LoginController extends Controller
         else
         {
             return response()->json([
-                'message' => 'no puedes aceeeeeedr',
+                'message' => 'no tienes permisos',
             ], 400);
         }
 
@@ -62,6 +81,7 @@ class LoginController extends Controller
                 'message' => 'no tienes permisos',
             ], 400);
         }
+
 
         if ($userDB->password == $inputs['password'] && $userDB->id_Roles == 2) 
         {
